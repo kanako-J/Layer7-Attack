@@ -16,3 +16,5 @@ Some network, or their own arrangement for HTTP/HTTPS multithreading attacks, th
 
 __Note: Do not attack websites with gov,edu, etc., which generally serve politicians, professionals, and even patients. Your one attack may not only cause the loss of the website, server loss, but also prolong the working hours of the staff, and patients are helpless to delay medical care.__
 
+![easyflood测试](https://user-images.githubusercontent.com/62545313/209175836-a485800a-f0bc-4994-8866-9297df0951a2.png)
+![easyflood服务器负载状况](https://user-images.githubusercontent.com/62545313/209175873-dca08a83-6ff8-4993-9cb9-925013b709a4.png)
