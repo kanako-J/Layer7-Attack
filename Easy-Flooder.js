@@ -1,4 +1,5 @@
-// 忽略错误
+// 忽略错误 
+//请注意 本项目并非我所编写
 //process.on('uncaughtException', function() {})
 //process.on('unhandledRejection', function() {})
 
@@ -24,7 +25,7 @@ const magenta = chalk.bold.magenta
 if (process.argv.length !== 8) {
     console.log(error('错误：命令格式不正确！'))
 
-    console.log(warning('示例：node CC+.js proxy.txt GET 10 60 http://example.com t'))
+    console.log(warning('示例：node Easy-Flooder.js proxy.txt GET 10 60 http://example.com t'))
 
     process.exit()
 }
