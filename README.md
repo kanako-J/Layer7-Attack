@@ -8,6 +8,11 @@ __注意事项：请勿攻击带有gov,edu等标识的网站，那些网站一�
 
 English/英语
 Some network, or their own arrangement for HTTP/HTTPS multithreading attacks, these attack scripts usually in general use has good anonymity
+
+
+
 *The main purpose of this project is to learn the network common attack mode, and write defense methods* 
+
+
 __Note: Do not attack websites with gov,edu, etc., which generally serve politicians, professionals, and even patients. Your one attack may not only cause the loss of the website, server loss, but also prolong the working hours of the staff, and patients are helpless to delay medical care.__
 
