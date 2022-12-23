@@ -1,5 +1,4 @@
-// 忽略错误 
-//请注意 本项目并非我所编写
+// 忽略错误
 //process.on('uncaughtException', function() {})
 //process.on('unhandledRejection', function() {})
 
@@ -11,7 +10,18 @@ const net = require('net')
 const path = require("path")
 const execSync = require('child_process').execSync
 
-const chalk = require('chalk')
+// 清屏
+console.log('\033[2J')
+
+// 尝试加载 Chalk，失败则安装
+try {
+    chalk = require('chalk')
+} catch (err) {
+    console.log('\x1B[1m\x1B[33m正在安装安装前置\x1B[39m \x1B[1m\x1B[31mChalk\x1B[39m \x1B[1m\x1B[33m请稍后...\x1B[39m')
+    execSync('npm install chalk')
+    console.log('\x1B[1m\x1B[32m前置\x1B[39m \x1B[1m\x1B[31mChalk\x1B[39m \x1B[1m\x1B[32m安装完成，请重新启动脚本。\x1B[39m')
+    process.exit()
+}
 
 // 颜色
 const cyan = chalk.bold.cyan
@@ -20,14 +30,13 @@ const green = chalk.bold.green
 const error = chalk.bold.red
 const warning = chalk.bold.yellow
 const magenta = chalk.bold.magenta
-
+console.log(cyan('『CC+』'))
 
 // 检查参数
 if (process.argv.length !== 8) {
     console.log(error('错误：命令格式不正确！'))
-
-    console.log(warning('示例：node Easy-Flooder.js proxy.txt GET 10 60 http://example.com t'))
-
+    console.log(warning('格式：node CC+.js 列表文件 方法 速率 时间(秒) 目标(URL) 随机参数[开:t/关:f]'))
+    console.log(warning('示例：node CC+.js proxy.txt GET 10 60 http://example.com t'))
     process.exit()
 }
 
